@@ -1,0 +1,153 @@
+$primary-color: #3f51b5; 
+$secondary-color: #f50057; 
+$background-color: #f9f9f9; 
+$background-color-fav: #ffc107; 
+$hover-color: #e0e0e0; 
+
+
+.search-container {
+    width: 100%;
+    position: relative;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  
+    .results-dropdown {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+  
+    mat-paginator {
+      margin: 20px 0;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  .full-width {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  button {
+    margin-top: 10px;
+  }
+
+  .top-right-button {
+    position: absolute;
+    padding: 10px 20px;
+    top: 110px;
+    right: 10px; 
+    z-index: 1000; 
+    background-color: $background-color-fav; 
+    color: black; 
+    border: 1px solid black; 
+    &:hover {
+      background-color: $background-color-fav; 
+    }
+  } 
+
+.results-dropdown {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+  mat-list-item {
+    cursor: pointer;
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: $hover-color;
+    }
+
+    strong {
+      font-size: 1.1rem;
+      color: $primary-color;
+    }
+
+    p {
+      margin: 5px 0;
+      font-size: 0.9rem;
+      color: #616161;
+    }
+
+    .stars {
+      font-size: 0.9rem;
+      color: $secondary-color;
+    }
+  }
+}
+
+
+.favorites {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+  h3 {
+    margin-bottom: 10px;
+    color: $primary-color;
+  }
+
+  mat-list-item {
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      background-color: $hover-color;
+    }
+
+    a {
+      margin-left: auto;
+      color: $secondary-color;
+      text-decoration: none;
+      font-weight: bold;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 20px;
+
+  input {
+    font-size: 1rem;
+    padding: 10px;
+  }
+}
+
+
+button {
+  background-color: $primary-color;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+  }
+}
