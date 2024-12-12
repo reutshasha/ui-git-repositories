@@ -52,16 +52,19 @@ export class RepositorySearchComponent {
     if (!this.favorites.find((fav) => fav.id === repository.id)) {
       this.favorites.push(repository);
 
-      this.apiService.addToFavorites(repository).subscribe(
-        (response) => {
-          this.snackBar.show('Favorite added successfully');//response
+      this.apiService.addToFavorites(repository).subscribe({
+        next: (response: any) => {
+          if (response && response.message === 'Added to Favorite') {
+            this.snackBar.show('Favorite added successfully');
+          } else {
+            this.snackBar.show('Unexpected response from server');
+          }
         },
-        (error) => {
-          this.snackBar.show('Error adding to favorites');
-        }
-      );
-    } else {
-      this.snackBar.show('This repository is already in favorites');
+        error: (err) => {
+          console.error('Error adding to favorites:', err);
+          this.snackBar.show('Failed to add favorite');
+        },
+      });
     }
   }
 
