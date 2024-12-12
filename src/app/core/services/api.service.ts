@@ -18,7 +18,7 @@ export class ApiService {
   }
 
   searchRepositories(query: string, page: number, perPage: number): Observable<GitHubSearchResult> {
-    const url = `${this.baseUrl}GithubSearchEngine/SearchRepositories?query=${query}&page=${page}&per_page=${perPage}`;//TODO: CHANGE TO search/repositories
+    const url = `${this.baseUrl}GitRepositoriesApi/SearchRepositories?query=${query}&page=${page}&per_page=${perPage}`;//TODO: CHANGE TO search/repositories
     return this.http.get<GitHubSearchResult>(url);
   }
 
