@@ -1,6 +1,7 @@
 $primary-color: #3f51b5; 
 $secondary-color: #f50057; 
 $background-color: #f9f9f9; 
+$background-color-fav-primery: #d1b45d; 
 $background-color-fav: #ffc107; 
 $hover-color: #e0e0e0; 
 
@@ -45,9 +46,10 @@ $hover-color: #e0e0e0;
     top: 110px;
     right: 10px; 
     z-index: 1000; 
-    background-color: $background-color-fav; 
+    background-color: $background-color-fav-primery; 
     color: black; 
     border: 1px solid black; 
+    text-decoration: none; 
     &:hover {
       background-color: $background-color-fav; 
     }
@@ -145,6 +147,7 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  text-decoration: none; 
   transition: background-color 0.3s ease;
 
   &:hover {

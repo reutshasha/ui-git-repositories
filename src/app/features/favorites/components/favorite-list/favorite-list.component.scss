@@ -18,3 +18,24 @@ $secondary-color: #5a72ff;
 .mat-row:nth-child(odd) {
   background-color: #f5f5f5;
 }
+
+.top-right-button {
+  background-color: $secondary-color; 
+  color: white; 
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  text-decoration: none; 
+  transition: background-color 0.3s ease; 
+
+  &:hover {
+    background-color: $primary-color; 
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px $secondary-color; 
+  }
+}
