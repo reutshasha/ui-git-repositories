@@ -8,6 +8,10 @@ export interface GitHubRepository {
   name?: string;
   description?: string;
   stargazers_count?: number;
-  html_url?: string;
+  owner?: GitHubOwner;
+}
+
+export interface GitHubOwner {
+  avatar_url: string;
 }
 

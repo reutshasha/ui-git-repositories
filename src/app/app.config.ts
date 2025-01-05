@@ -7,6 +7,9 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthInterceptor } from './core/services/auth.interceptor';
+import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }),
@@ -17,6 +20,13 @@ export const appConfig: ApplicationConfig = {
   provideClientHydration(withEventReplay()),
   importProvidersFrom(MatSnackBarModule),
   importProvidersFrom(NoopAnimationsModule),
+  importProvidersFrom(
+    MatSnackBarModule,
+    NoopAnimationsModule,
+    MatDialogModule, 
+    MatFormFieldModule, 
+    MatInputModule 
+  ),
 
   ]
 };

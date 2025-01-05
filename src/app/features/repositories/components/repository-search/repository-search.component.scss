@@ -137,7 +137,6 @@ mat-form-field {
   }
 }
 
-
 button {
   background-color: $primary-color;
   color: white;
@@ -153,4 +152,64 @@ button {
   &:hover {
     background-color: darken($primary-color, 10%);
   }
+}
+
+.results-dropdown {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+  mat-list-item {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 10px 0;
+
+    .repo-info {
+      flex-grow: 1; 
+      text-align: left; 
+    }
+
+    .bookmark-button {
+      margin-left: 20px; 
+      background-color: $background-color-fav-primery;
+      color: black;
+      font-size: 0.9rem;
+      font-weight: bold;
+      border-radius: 5px;
+      padding: 8px 12px;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: $background-color-fav;
+      }
+    }
+
+    &:not(:last-child) {
+      border-bottom: 1px solid #e0e0e0; 
+    }
+  }
+}
+
+
+.avatar-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover; 
+  margin-right: 10px;
+}
+
+.center-dialog{
+    position: fixed !important;
+    height: 298px !important;
+    margin: 60px 60px 60px 60px !important;
+  }
+
+.mat-dialog-container{
+  position: fixed !important;
+  height: 298px !important;
+  margin: 60px 60px 60px 60px !important;
 }

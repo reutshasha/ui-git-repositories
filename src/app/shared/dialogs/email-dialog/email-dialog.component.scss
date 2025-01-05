@@ -1,0 +1,79 @@
+/* Style for the email dialog */
+::ng-deep {
+    mat-dialog-content {
+      padding: 20px;
+      background-color: #fafafa;
+      border-radius: 8px;
+    }
+  
+    mat-dialog-title {
+      font-size: 1.5rem;
+      color: #3f51b5;
+      text-align: center;
+      padding-bottom: 10px;
+    }
+  
+    mat-form-field {
+      width: 100%;
+      margin-bottom: 15px;
+  
+      .mat-input-element {
+        padding: 10px;
+      }
+  
+      .mat-error {
+        font-size: 0.9rem;
+        color: #d32f2f;
+      }
+    }
+  
+    mat-dialog-actions {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 10px;
+      border-top: 1px solid #ddd;
+  
+      button {
+        font-weight: bold;
+        padding: 10px 20px;
+      }
+  
+      .mat-button {
+        color: #2196f3;
+      }
+  
+      .mat-raised-button {
+        background-color: #3f51b5;
+        color: white;
+        &:hover {
+          background-color: #303f9f;
+        }
+      }
+  
+      .mat-raised-button[disabled] {
+        background-color: #b0bec5;
+        cursor: not-allowed;
+      }
+    }
+  }
+  
+//   ::ng-deep .mat-dialog-container {
+//     border-radius: 10px;
+//     // overflow: hidden;
+//     background-color: #fff;
+//     position:absolute !important;
+//   }
+
+::ng-deep .center-dialog .mat-dialog-container {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+  }
+  
+  .mat-dialog-container{
+    position: fixed !important;
+    height: 298px !important;
+    margin: 60px 60px 60px 60px !important;
+  }
+  

@@ -6,6 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { SnackBarUtil } from '../../../../shared/utilities/snack-bar.util';
+import { MatDialog } from '@angular/material/dialog';
+import { EmailDialogComponent } from '../../../../shared/dialogs/email-dialog/email-dialog.component';
 
 @Component({
   selector: 'app-repository-search',
@@ -24,6 +26,8 @@ export class RepositorySearchComponent {
 
   private apiService = inject(ApiService);
   private snackBar = inject(SnackBarUtil);
+
+  constructor(private dialog: MatDialog) { }
 
   search() {
     if (!this.query) {
@@ -52,30 +56,43 @@ export class RepositorySearchComponent {
     if (!this.favorites.find((fav) => fav.id === repository.id)) {
       this.favorites.push(repository);
 
-      this.apiService.addToFavorites(repository).subscribe({
+      this.apiService.addToBookmarkes(repository).subscribe({
         next: (response: any) => {
-          if (response && response.message === 'Added to Favorite') {
-            this.snackBar.show('Favorite added successfully');
+          if (response && response.message === 'Added to Bookmark') {
+            this.snackBar.show('Bookmark added successfully');
           } else {
             this.snackBar.show('Unexpected response from server');
           }
         },
         error: (err) => {
-          console.error('Error adding to favorites:', err);
-          this.snackBar.show('Failed to add favorite');
+          console.error('Error adding to Bookmarkes:', err);
+          this.snackBar.show('Failed to add Bookmark');
         },
       });
     }
   }
 
   getFavorites() {
-    this.apiService.getFavorites().subscribe(
+    this.apiService.getBookmarkes().subscribe(
       (favorites) => {
         this.results = favorites;
       },
       (error) => {
-        this.snackBar.show('Error fetching favorites');
+        this.snackBar.show('Error fetching Bookmarkes');
       }
     );
+  }
+
+  openEmailDialog(repo: any): void {
+    const dialogRef = this.dialog.open(EmailDialogComponent, {
+      width: '400px',
+      data: { repo },
+      position: { top: '50%', left: '50%' },  
+      panelClass: 'center-dialog' 
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 }

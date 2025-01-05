@@ -18,7 +18,7 @@ import { SnackBarUtil } from '../../../../shared/utilities/snack-bar.util';
   imports: [AngularMaterialModule, CommonModule, FormsModule, RouterModule],
 })
 export class FavoriteListComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'description', 'stargazers_count', 'html_url'];
+  displayedColumns: string[] = ['id', 'name', 'description', 'stargazers_count', 'avatar_url', 'remove'];
   dataSource = new MatTableDataSource<GitHubRepository>();
 
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
@@ -32,7 +32,7 @@ export class FavoriteListComponent implements OnInit {
   }
 
   fetchFavorites(): void {
-    this.apiService.getFavorites().subscribe({
+    this.apiService.getBookmarkes().subscribe({
       next: (data) => {
         this.dataSource.data = data;
 
@@ -42,12 +42,30 @@ export class FavoriteListComponent implements OnInit {
         if (this.sort) {
           this.dataSource.sort = this.sort;
         }
-        this.snackBar.show('Favorites loaded successfully!');
+        this.snackBar.show('Bookmarkes loaded successfully!');
       },
 
       error: (err) => {
-        this.snackBar.show('Error fetching favorites', SnackBarUtil.Duration.LONG);
-        console.error('Error fetching favorites', err)
+        this.snackBar.show('Error fetching Bookmarkes', SnackBarUtil.Duration.LONG);
+        console.error('Error fetching Bookmarkes', err)
+      },
+    });
+  }
+
+  removeBookmark(repo: any): void {
+    this.apiService.deleteBookmark(repo.id).subscribe({
+      next: (response) => {
+        console.log('Response:', response);         
+        if (response) {
+          this.dataSource.data = this.dataSource.data.filter(item => item.id !== repo.id);
+          this.snackBar.show('Bookmark removed successfully!');
+        } else {
+          this.snackBar.show('Failed to remove bookmark.', SnackBarUtil.Duration.LONG);
+        }
+      },
+      error: (err) => {
+        this.snackBar.show('Error removing bookmark', SnackBarUtil.Duration.LONG);
+        console.error('Failed to remove bookmark:', err);
       },
     });
   }

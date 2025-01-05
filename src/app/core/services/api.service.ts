@@ -22,15 +22,15 @@ export class ApiService {
     return this.http.get<GitHubSearchResult>(url);
   }
 
-  addToFavorites(favorite: GitHubRepository): Observable<GitHubRepository> {
-    return this.http.post<GitHubRepository>(`${this.baseUrl}Favorite/AddToFavorite`, favorite);
+  addToBookmarkes(favorite: GitHubRepository): Observable<GitHubRepository> {
+    return this.http.post<GitHubRepository>(`${this.baseUrl}Favorite/AddToBookmark`, favorite);
   }
 
-  getFavorites(): Observable<GitHubRepository[]> {
-    return this.http.get<GitHubRepository[]>(`${this.baseUrl}Favorite/GetFavorites`);
+  getBookmarkes(): Observable<GitHubRepository[]> {
+    return this.http.get<GitHubRepository[]>(`${this.baseUrl}Favorite/GetBookmarkes`);
   }
 
-  deleteFavorite(favoriteId: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/favorites/delete/${favoriteId}`);
+  deleteBookmark(favoriteId: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}Favorite/DeleteBookmark/${favoriteId}`);
   }
 }

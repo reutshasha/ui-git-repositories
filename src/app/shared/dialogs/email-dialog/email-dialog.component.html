@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>Send Email</h2>
+<mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Email Address</mat-label>
+    <input matInput [(ngModel)]="email" placeholder="Enter email" required>
+    <mat-error *ngIf="!email || !email.includes('@')">Please enter a valid email</mat-error>
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button (click)="closeDialog()">Cancel</button>
+  <button mat-raised-button color="primary" [disabled]="!email || !email.includes('@')" (click)="sendEmail()">Send</button>
+</mat-dialog-actions>

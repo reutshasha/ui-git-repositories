@@ -5,24 +5,38 @@
     </mat-form-field>
     <button mat-raised-button color="primary" (click)="search()">Search</button>
 
-    <a routerLink="/favorites" mat-raised-button class="top-right-button" color="accent">Go to Favorites</a>
-
+    <a routerLink="/Bookmarkes" mat-raised-button class="top-right-button" color="accent">Go to Bookmarkes</a>
     <mat-card class="results-dropdown" *ngIf="results.length">
         <mat-list>
-            <mat-list-item *ngFor="let repo of results" (click)="addToFavorites(repo)">
-                <mat-icon matListIcon>folder</mat-icon>
-                <div matLine>
-                    <strong>{{ repo.name }}</strong>
+            <mat-list-item *ngFor="let repo of results">
+                <div class="item-content">
+                    <div class="repo-info">
+                        <img [src]="repo.owner?.avatar_url" alt="{{ repo.name }}" class="avatar-image" />
+                        <div matLine>
+                            <strong>{{ repo.name }}</strong>
+                        </div>
+                        <div matLine>
+                            {{ repo.description }}
+                        </div>
+                        <span matLine class="stars">⭐ {{ repo.stargazers_count }}</span>
+                    </div>
+                    <button mat-raised-button class="bookmark-button" (click)="addToFavorites(repo)">
+                        Add to Bookmark
+                    </button>
+
+                    <button mat-raised-button color="primary" (click)="openEmailDialog(repo)">
+                        Send Email
+                      </button>
                 </div>
-                <div matLine>
-                    {{ repo.description }}
-                </div>
-                <span matLine class="stars">⭐ {{ repo.stargazers_count }}</span>
             </mat-list-item>
         </mat-list>
     </mat-card>
-
+    
     <mat-paginator [length]="totalResults" [pageSize]="perPage" [pageSizeOptions]="[20]" (page)="onPageChange($event)">
     </mat-paginator>
 
 </div>
+
+
+
+
